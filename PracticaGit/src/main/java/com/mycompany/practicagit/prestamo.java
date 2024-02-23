@@ -9,5 +9,10 @@ package com.mycompany.practicagit;
  * @author carlos
  */
 public class prestamo {
-    
+    private String codigoLibro;
+    private int carnetEstudiante;
+    private fecha fechaPrestamo;
+    private fecha fechaDevolucion;
+    private int pago;
+    private boolean finalizado=false;
 }

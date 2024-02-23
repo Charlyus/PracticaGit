@@ -11,7 +11,7 @@ package com.mycompany.practicagit;
 public class PracticaGit {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+    
     }
     public static final int INGENIERIA=1;
     public static final int MEDICINA=2;
