@@ -4,11 +4,22 @@
  */
 package com.mycompany.practicagit;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author carlos
  */
 public class cargarDatos extends javax.swing.JFrame {
+    
+    File archivoSeleccionado;
 
     /**
      * Creates new form Principal
@@ -40,6 +51,11 @@ public class cargarDatos extends javax.swing.JFrame {
         });
 
         jButton2.setText("Continuar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,12 +98,56 @@ public class cargarDatos extends javax.swing.JFrame {
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         // TODO add your handling code here:
+        JFileChooser seleccionarArchivo;
+        seleccionarArchivo = new JFileChooser();
+        seleccionarArchivo.showOpenDialog(null);
+        archivoSeleccionado = seleccionarArchivo.getSelectedFile();
+
+
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //TODO add your handling code here:
+        
+
+        BufferedReader obj = null;
+        try {
+            
+            obj = new BufferedReader(new FileReader(archivoSeleccionado));
+            String linea;
+            while ((linea = obj.readLine()) != null) {
+                switch (linea){
+                    case "LIBRO" :
+                        System.out.println(linea);
+                        /*
+                        * Las siguientes 4 lineas van a ser informacion del libro
+                        * donde primero sera el titulo, luego autor ...
+                        */
+                        break;
+                    case "ESTUDIANTE":
+                        break;
+                    case "PRESTAMO":
+                        break;
+                    default:
+                        //TITULO:USAC
+                        //AUTOR:Walter Mazariegos
+                        break;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(cargarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(cargarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -98,16 +158,28 @@ public class cargarDatos extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cargarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cargarDatos.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(cargarDatos.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(cargarDatos.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(cargarDatos.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
