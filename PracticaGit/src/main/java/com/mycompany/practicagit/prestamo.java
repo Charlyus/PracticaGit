@@ -15,4 +15,11 @@ public class prestamo {
     private fecha fechaDevolucion;
     private int pago;
     private boolean finalizado=false;
+
+    public prestamo(String codigoLibro, int carnetEstudiante, fecha fechaPrestamo) {
+        this.codigoLibro = codigoLibro;
+        this.carnetEstudiante = carnetEstudiante;
+        this.fechaPrestamo = fechaPrestamo;
+    }
+    
 }

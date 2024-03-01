@@ -11,7 +11,9 @@ package com.mycompany.practicagit;
 public class PracticaGit {
 
     public static void main(String[] args) {
-    
+        cargarDatos cd= new cargarDatos();
+        cd.setVisible(true);
+        
     }
     public static final int INGENIERIA=1;
     public static final int MEDICINA=2;

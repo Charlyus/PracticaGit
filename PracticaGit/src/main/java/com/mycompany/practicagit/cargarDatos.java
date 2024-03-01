@@ -4,12 +4,29 @@
  */
 package com.mycompany.practicagit;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author carlos
  */
 public class cargarDatos extends javax.swing.JFrame {
-
+    public static int contadorEstudiantes;
+    public static int contadorPrestamos;
+    public static int contadorLibros;
+    public static int erroresRegistros;
+    ArrayList <prestamo> listaPrestamo=new ArrayList<prestamo>();
+    ArrayList <libro> listaLibros=new ArrayList<libro>();
+    ArrayList <estudiante> listaEstudiantes=new ArrayList<estudiante>();
+    ArrayList <prestamo> erroresPrestamo=new ArrayList<prestamo>();
+    ArrayList <libro> erroresLibros=new ArrayList<libro>();
+    ArrayList <estudiante> erroresEstudiantes=new ArrayList<estudiante>();
     /**
      * Creates new form Principal
      */
@@ -82,11 +99,136 @@ public class cargarDatos extends javax.swing.JFrame {
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(null);
+        String filePath = fc.getSelectedFile().getAbsolutePath();
+        System.out.println(filePath);
+
+        BufferedReader reader = null;
+        String line = "";
+        contadorEstudiantes=0;
+        contadorPrestamos=0;
+        contadorLibros=0;
+        erroresRegistros=0;
+        String error="";
+        try {
+            reader = new BufferedReader(new FileReader(filePath));
+            
+            while ((line = reader.readLine()) != null) {
+                System.out.println("llegue");
+                switch (line) {
+                    case "LIBRO":
+                        System.out.println("entre");
+                        String titulo;
+                        String autor;
+                        String codigo;
+                        int copias;
+                        line=reader.readLine();
+                        String[] atributo = line.split(":");
+                        titulo=atributo[1];
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        autor=atributo[1];
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        codigo=atributo[1];  
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        copias=Integer.parseInt(atributo[1]);
+                        if (validarFormato(codigo)) {
+                            System.out.println("El formato es válido.");
+                            listaLibros.add(new libro(titulo, autor, codigo, copias));
+                        } else {
+                            System.out.println("El formato no es válido.");
+                            erroresLibros.add(new libro(titulo, autor, codigo, copias));
+                            erroresRegistros++;
+                        }
+                        reader.readLine();
+                        break;
+                        
+                    case "ESTUDIANTE":
+                     
+                        int carnet;
+                        String nombre;
+                        int carrera;
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        carnet=Integer.parseInt(atributo[1]);
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        nombre=atributo[1];
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        carrera=Integer.parseInt(atributo[1]);  
+                        
+                        if ((carrera==1)||(carrera==2)||(carrera==3)||(carrera==4)||(carrera==5)||(carrera==6)) {
+                            System.out.println("El formato es válido.");
+                            listaEstudiantes.add(new estudiante(carnet, nombre, carrera));
+                        } else {
+                            System.out.println("El formato no es válido.");
+                            erroresEstudiantes.add(new estudiante(carnet, nombre, carrera));
+                            erroresRegistros++;
+                        }
+                        reader.readLine();
+                        break;
+                    case "PRESTAMO":
+                        String codigoLibro;
+                        int carnetEstudiante;
+                        String fecha;
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        codigoLibro=atributo[1];
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        carnetEstudiante=Integer.parseInt(atributo[1]);
+                        line=reader.readLine();
+                        atributo = line.split(":");
+                        fecha=atributo[1];  
+                        
+                        if (validarFormatoFecha(fecha)&&validarFormato(codigoLibro)) {
+                            System.out.println("El formato es válido.");
+                            atributo=fecha.split("-");
+                            fecha a = new fecha(Integer.parseInt(atributo[2]),Integer.parseInt(atributo[1]),Integer.parseInt(atributo[0]));
+                            listaPrestamo.add(new prestamo(codigoLibro, carnetEstudiante, a));
+                        } else {
+                            System.out.println("El formato no es válido.");
+                            erroresRegistros++;
+                        }
+                        reader.readLine();
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        for (libro a : listaLibros) {
+            System.out.println(a.getTitulo());
+        }
+        principal principal = new principal();
+        this.setVisible(false);
+        principal.setVisible(true);
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    
+    public static boolean validarFormato(String input) {
+        String regex = "\\d{3}-[A-Za-z]{3}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
+    public static boolean validarFormatoFecha(String input) {
+        String regex = "\\d{4}-\\d{2}-\\d{2}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher.matches();
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

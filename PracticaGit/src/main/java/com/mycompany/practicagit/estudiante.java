@@ -14,11 +14,13 @@ public class estudiante {
     private String nombre;
     private int carrera;
 
-    public estudiante(int carnet, fecha fechaNacimiento, String nombre) {
+    public estudiante(int carnet, String nombre, int carrera) {
         this.carnet = carnet;
-        this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
+        this.carrera = carrera;
     }
+
+    
 
     public estudiante(int carnet, fecha fechaNacimiento, String nombre, int carrera) {
         this.carnet = carnet;
