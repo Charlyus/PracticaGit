@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,9 +23,9 @@ public class cargarDatos extends javax.swing.JFrame {
     public static int contadorPrestamos;
     public static int contadorLibros;
     public static int erroresRegistros;
-    ArrayList <prestamo> listaPrestamo=new ArrayList<prestamo>();
-    ArrayList <libro> listaLibros=new ArrayList<libro>();
-    ArrayList <estudiante> listaEstudiantes=new ArrayList<estudiante>();
+    public static ArrayList <prestamo> listaPrestamo=new ArrayList<prestamo>();
+    public static ArrayList <libro> listaLibros=new ArrayList<libro>();
+    public static ArrayList <estudiante> listaEstudiantes=new ArrayList<estudiante>();
     ArrayList <prestamo> erroresPrestamo=new ArrayList<prestamo>();
     ArrayList <libro> erroresLibros=new ArrayList<libro>();
     ArrayList <estudiante> erroresEstudiantes=new ArrayList<estudiante>();
@@ -57,6 +59,11 @@ public class cargarDatos extends javax.swing.JFrame {
         });
 
         jButton2.setText("Continuar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,10 +122,9 @@ public class cargarDatos extends javax.swing.JFrame {
             reader = new BufferedReader(new FileReader(filePath));
             
             while ((line = reader.readLine()) != null) {
-                System.out.println("llegue");
                 switch (line) {
                     case "LIBRO":
-                        System.out.println("entre");
+                        
                         String titulo;
                         String autor;
                         String codigo;
@@ -208,10 +214,17 @@ public class cargarDatos extends javax.swing.JFrame {
         for (libro a : listaLibros) {
             System.out.println(a.getTitulo());
         }
+        JOptionPane.showMessageDialog(null, "se han cargado los datos");
+        
+    }//GEN-LAST:event_btnCargarDatosActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
         principal principal = new principal();
         this.setVisible(false);
         principal.setVisible(true);
-    }//GEN-LAST:event_btnCargarDatosActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
