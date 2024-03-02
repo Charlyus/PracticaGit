@@ -34,6 +34,8 @@ public class cargarDatos extends javax.swing.JFrame {
      */
     public cargarDatos() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**

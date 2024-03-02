@@ -38,7 +38,12 @@ public class principal extends javax.swing.JFrame {
         btnListadoE = new javax.swing.JButton();
         btnListadoL = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jButton1.setText("devolucion");
 
@@ -51,6 +56,11 @@ public class principal extends javax.swing.JFrame {
         jButton5.setText("Reportes");
 
         jButton4.setText("agregar libro");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         btnListadoE.setText("listado Estudiantes");
 
@@ -122,6 +132,20 @@ public class principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        agregarLibro al = new agregarLibro();
+        this.setVisible(false);
+        al.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cargarDatos cd = new cargarDatos();
+        this.setVisible(false);
+        cd.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
