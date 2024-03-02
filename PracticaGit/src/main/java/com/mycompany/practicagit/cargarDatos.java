@@ -81,9 +81,9 @@ public class cargarDatos extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(81, 81, 81)
                 .addComponent(btnCargarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(40, 40, 40)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -225,7 +225,7 @@ public class cargarDatos extends javax.swing.JFrame {
         principal principal = new principal();
         this.setVisible(false);
         principal.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
