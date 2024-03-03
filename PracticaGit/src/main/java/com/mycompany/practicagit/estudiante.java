@@ -28,6 +28,38 @@ public class estudiante {
         this.nombre = nombre;
         this.carrera = carrera;
     }
+
+    public int getCarnet() {
+        return carnet;
+    }
+
+    public void setCarnet(int carnet) {
+        this.carnet = carnet;
+    }
+
+    public fecha getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(fecha fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(int carrera) {
+        this.carrera = carrera;
+    }
     
     
 }

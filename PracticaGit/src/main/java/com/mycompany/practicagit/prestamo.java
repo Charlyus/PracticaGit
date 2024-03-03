@@ -21,5 +21,53 @@ public class prestamo {
         this.carnetEstudiante = carnetEstudiante;
         this.fechaPrestamo = fechaPrestamo;
     }
+
+    public String getCodigoLibro() {
+        return codigoLibro;
+    }
+
+    public void setCodigoLibro(String codigoLibro) {
+        this.codigoLibro = codigoLibro;
+    }
+
+    public int getCarnetEstudiante() {
+        return carnetEstudiante;
+    }
+
+    public void setCarnetEstudiante(int carnetEstudiante) {
+        this.carnetEstudiante = carnetEstudiante;
+    }
+
+    public fecha getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(fecha fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public fecha getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(fecha fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public int getPago() {
+        return pago;
+    }
+
+    public void setPago(int pago) {
+        this.pago = pago;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
     
 }
