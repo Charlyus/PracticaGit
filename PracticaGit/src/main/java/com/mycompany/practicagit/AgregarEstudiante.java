@@ -49,27 +49,27 @@ public class AgregarEstudiante extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("INGRESAR DATOS ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, 30));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CARNET");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("NOMBRE");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("CODIGO DE CARRERA");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("FECHA DE NACIMIENTO");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
@@ -111,8 +111,6 @@ public class AgregarEstudiante extends javax.swing.JFrame {
 
         fondoEstud.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
         fondoEstud.setForeground(new java.awt.Color(255, 51, 51));
-        fondoEstud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo-malla-patron-tecnologia-hexagonal-espacio-texto_1017-26293.jpg"))); // NOI18N
-        fondoEstud.setText("jLabel1");
         getContentPane().add(fondoEstud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 310));
 
         pack();

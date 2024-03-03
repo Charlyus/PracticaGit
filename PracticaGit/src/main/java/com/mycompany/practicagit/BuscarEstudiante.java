@@ -33,7 +33,12 @@ public class BuscarEstudiante extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         fondotres = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
@@ -48,6 +53,11 @@ public class BuscarEstudiante extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("BUSCAR\n");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
 
         jTable1.setBackground(new java.awt.Color(153, 153, 255));
@@ -68,13 +78,22 @@ public class BuscarEstudiante extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 310, 80));
-
-        fondotres.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo-malla-patron-tecnologia-hexagonal-espacio-texto_1017-26293.jpg"))); // NOI18N
-        fondotres.setText("jLabel1");
         getContentPane().add(fondotres, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 530, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        ListadoEstudiante regresoListado = new ListadoEstudiante();
+        this.setVisible(false);
+        regresoListado.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

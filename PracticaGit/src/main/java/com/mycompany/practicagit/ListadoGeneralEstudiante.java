@@ -31,7 +31,12 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         fondogeneral = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
@@ -62,12 +67,18 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, 150));
 
-        fondogeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/840_560.jpg"))); // NOI18N
         fondogeneral.setText("jLabel1");
         getContentPane().add(fondogeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+         ListadoEstudiante regresoListadoDos = new ListadoEstudiante();
+        this.setVisible(false);
+        regresoListadoDos.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

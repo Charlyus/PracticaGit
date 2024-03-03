@@ -83,8 +83,18 @@ public class principal extends javax.swing.JFrame {
         });
 
         btnListadoE.setText("listado Estudiantes");
+        btnListadoE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListadoEActionPerformed(evt);
+            }
+        });
 
         btnListadoL.setText("listado Libros");
+        btnListadoL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListadoLActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +207,20 @@ public class principal extends javax.swing.JFrame {
         this.setVisible(false);
         ae.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnListadoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListadoEActionPerformed
+        // TODO add your handling code here:
+        ListadoEstudiante listadoEstudiante = new ListadoEstudiante();
+        this.setVisible(false);
+        listadoEstudiante.setVisible(true);
+    }//GEN-LAST:event_btnListadoEActionPerformed
+
+    private void btnListadoLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListadoLActionPerformed
+        // TODO add your handling code here:
+        ListadoLibros listadoLibro = new ListadoLibros();
+        this.setVisible(false);
+        listadoLibro.setVisible(true);
+    }//GEN-LAST:event_btnListadoLActionPerformed
 
     /**
      * @param args the command line arguments

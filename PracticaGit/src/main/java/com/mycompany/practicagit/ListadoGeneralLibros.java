@@ -31,7 +31,12 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         listadoGeneralLibros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
@@ -57,12 +62,18 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 90));
 
-        listadoGeneralLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo-malla-patron-tecnologia-hexagonal-espacio-texto_1017-26293.jpg"))); // NOI18N
         listadoGeneralLibros.setText("jLabel1");
         getContentPane().add(listadoGeneralLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        ListadoLibros regresoAlLibro = new ListadoLibros();
+        this.setVisible(false);
+        regresoAlLibro.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

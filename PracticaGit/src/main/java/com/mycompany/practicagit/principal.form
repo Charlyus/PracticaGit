@@ -162,11 +162,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="listado Estudiantes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListadoEActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnListadoL">
           <Properties>
             <Property name="text" type="java.lang.String" value="listado Libros"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListadoLActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

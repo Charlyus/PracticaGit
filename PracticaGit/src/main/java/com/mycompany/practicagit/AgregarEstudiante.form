@@ -34,7 +34,7 @@
           <Font name="Tw Cen MT Condensed Extra Bold" size="36" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="INGRESAR DATOS "/>
       </Properties>
@@ -50,7 +50,7 @@
           <Font name="Tw Cen MT Condensed Extra Bold" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="CARNET"/>
       </Properties>
@@ -66,7 +66,7 @@
           <Font name="Tw Cen MT Condensed Extra Bold" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="NOMBRE"/>
       </Properties>
@@ -82,7 +82,7 @@
           <Font name="Tw Cen MT Condensed Extra Bold" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="CODIGO DE CARRERA"/>
       </Properties>
@@ -98,7 +98,7 @@
           <Font name="Tw Cen MT Condensed Extra Bold" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="FECHA DE NACIMIENTO"/>
       </Properties>
@@ -213,10 +213,6 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icons/fondo-malla-patron-tecnologia-hexagonal-espacio-texto_1017-26293.jpg"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
