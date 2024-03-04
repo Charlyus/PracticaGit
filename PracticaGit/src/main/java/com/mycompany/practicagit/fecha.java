@@ -18,5 +18,34 @@ public class fecha {
         this.mes = mes;
         this.anio = anio;
     }
+    public int diferencia(fecha inicio, fecha fin){
+        int diasInicio=inicio.dia+fin.dia+inicio.mes*30+inicio.anio*365;
+        int diasFin=fin.dia+fin.mes*30+fin.anio*365;
+        return diasFin-diasInicio;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
     
 }
