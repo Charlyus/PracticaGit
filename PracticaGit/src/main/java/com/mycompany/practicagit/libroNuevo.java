@@ -227,7 +227,7 @@ public class libroNuevo extends javax.swing.JFrame {
                 fecha f =new fecha(dia, mes, año);
                 libro l=new libro(titulo, autor, codigo, Integer.parseInt(copias), f, editorial);
                 cargarDatos.listaLibros.add(l);
-                System.out.println("libro agregado");
+                JOptionPane.showMessageDialog(null,"libro agregado");
             }else if ((!codigo.isEmpty())&&(!autor.isEmpty())&&(!titulo.isEmpty())&&(!copias.isEmpty())) {
                 
                 libro l=new libro(titulo, autor, codigo, Integer.parseInt(copias));

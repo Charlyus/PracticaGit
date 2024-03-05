@@ -4,6 +4,8 @@
  */
 package com.mycompany.practicagit;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ana
@@ -15,8 +17,22 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
      */
     public ListadoGeneralLibros() {
         initComponents();
+        llenarListado();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+    }
+    public void llenarListado(){
+        int registros=cargarDatos.listaLibros.size();
+            DefaultTableModel modeloListado = (DefaultTableModel) listadoLibros.getModel();
+            modeloListado.setRowCount(registros);
+            int i=0;
+            for (libro l : cargarDatos.listaLibros) {
+                modeloListado.setValueAt(l.getCodigo(), i, 0);
+                modeloListado.setValueAt(l.getTitulo(), i, 1);
+                modeloListado.setValueAt(l.getCopias(), i, 2);
+                i++;
+            }
+    
     }
 
     /**
@@ -30,7 +46,7 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listadoLibros = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -40,8 +56,8 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listadoLibros.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 12)); // NOI18N
+        listadoLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -52,7 +68,7 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
                 "CODIGO", "TITULO", "COPIAS"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(listadoLibros);
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel2.setText("LISTADO GENERAL DE TODOS LOS LIBROS ");
@@ -142,6 +158,6 @@ public class ListadoGeneralLibros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable listadoLibros;
     // End of variables declaration//GEN-END:variables
 }

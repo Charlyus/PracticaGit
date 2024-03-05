@@ -4,6 +4,8 @@
  */
 package com.mycompany.practicagit;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ana
@@ -15,8 +17,22 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
      */
     public ListadoGeneralEstudiante() {
         initComponents();
+        llenarListado();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+    }
+    public void llenarListado(){
+        int registros=cargarDatos.listaEstudiantes.size();
+            DefaultTableModel modeloListado = (DefaultTableModel) listado.getModel();
+            modeloListado.setRowCount(registros);
+            int i=0;
+            for (estudiante e : cargarDatos.listaEstudiantes) {
+                modeloListado.setValueAt(e.getCarnet(), i, 0);
+                modeloListado.setValueAt(e.getNombre(), i, 1);
+                modeloListado.setValueAt(e.getCarrera(), i, 2);
+                i++;
+            }
+    
     }
 
     /**
@@ -30,7 +46,7 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listado = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -40,7 +56,7 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -55,7 +71,7 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
                 "CARNET", "NOMBRE", "CARRERA"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(listado);
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
         jLabel2.setText("LISTADO GENERAL DE ESTUDIANTES");
@@ -144,6 +160,6 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable listado;
     // End of variables declaration//GEN-END:variables
 }
