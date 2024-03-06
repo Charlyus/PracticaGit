@@ -4,6 +4,9 @@
  */
 package com.mycompany.practicagit;
 
+import com.mycompany.practicagit.Reporte.PrestamoRealizadoEstudiante;
+import com.mycompany.practicagit.Reporte.ReporteDevolucionActual;
+
 /**
  *
  * @author Ana
@@ -47,10 +50,20 @@ public class Reportes extends javax.swing.JFrame {
         jButton1.setText("dinero recaudado");
 
         jButton2.setText("prestamos  que se  entregan  hoy");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("prestamos  en  mora");
 
         jButton4.setText("prestamos totales por estudiante");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("prestamos por  estudiante actualmente");
 
@@ -99,7 +112,7 @@ public class Reportes extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60))
@@ -136,6 +149,23 @@ public class Reportes extends javax.swing.JFrame {
         this.setVisible(false);
         principal.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ReporteDevolucionActual librosPrestados = new ReporteDevolucionActual();
+        this.setVisible(false);
+        librosPrestados.DevolucionReportes();
+        librosPrestados.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        PrestamoRealizadoEstudiante pre = new PrestamoRealizadoEstudiante();
+        this.setVisible(false);
+        pre.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
