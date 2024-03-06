@@ -19,12 +19,20 @@ public class fecha {
         this.anio = anio;
     }
 
+
     @Override
     public String toString() {
         return dia+"/"+mes+"/"+anio;
     }
     
     
+
+    public int diferencia(fecha inicio, fecha fin){
+        int diasInicio=inicio.dia+fin.dia+inicio.mes*30+inicio.anio*365;
+        int diasFin=fin.dia+fin.mes*30+fin.anio*365;
+        return diasFin-diasInicio;
+    }
+
 
     public int getDia() {
         return dia;

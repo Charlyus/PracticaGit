@@ -124,9 +124,14 @@ public class libroExistente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String codigo = jtcodigo.getText();
-        int copias = Integer.parseInt(jtcantidad.getText());
-        actualizarLibroLibro(cargarDatos.listaLibros,codigo,copias);
+        if ((!jtcodigo.getText().isEmpty())&&(!jtcantidad.getText().isEmpty())) {
+            String codigo = jtcodigo.getText();
+            int copias = Integer.parseInt(jtcantidad.getText());
+            actualizarLibroLibro(cargarDatos.listaLibros,codigo,copias);
+        }else{
+            JOptionPane.showMessageDialog(null,"llene todos los  datos por favor");
+        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
     

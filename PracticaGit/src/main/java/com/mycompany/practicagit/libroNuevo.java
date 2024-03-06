@@ -216,24 +216,28 @@ public class libroNuevo extends javax.swing.JFrame {
         String autor = jtautor.getText();
         String titulo = jttitulo.getText();
         String copias = jtcopias.getText();
-        int año = Integer.parseInt(jtaño.getText());
-        int mes = Integer.parseInt(jtmes.getText());
-        int dia = Integer.parseInt(jtdia.getText());
+        
         String editorial = jteditorial.getText();
         if (cargarDatos.validarFormato(codigo)) {
             System.out.println("formato valido");
-            if ((codigo!=null)&&(autor!=null)&&(titulo!=null)&&(copias!=null)||(editorial!=null)||(jtaño.getText()!=null)||(jtdia.getText()!=null)||(jtmes.getText()!=null)) {
-               libro l=new libro(titulo, autor, codigo, Integer.parseInt(copias));
-               JOptionPane.showMessageDialog(null,"libro agregado");
-               cargarDatos.listaLibros.add(l);
-            }else if ((codigo!=null)&&(autor!=null)&&(titulo!=null)&&(copias!=null)&&(editorial!=null)&&(jtaño.getText()!=null)&&(jtdia.getText()!=null)&&(jtmes.getText()!=null)) {
+            if (!(codigo.isEmpty())&&(!autor.isEmpty())&&(!titulo.isEmpty())&&(!copias.isEmpty())&&(!editorial.isEmpty())&&(!jtaño.getText().isEmpty())&&(!jtdia.getText().isEmpty())&&(!jtmes.getText().isEmpty())) {
+                int año = Integer.parseInt(jtaño.getText());
+                int mes = Integer.parseInt(jtmes.getText());
+                int dia = Integer.parseInt(jtdia.getText());
                 fecha f =new fecha(dia, mes, año);
                 libro l=new libro(titulo, autor, codigo, Integer.parseInt(copias), f, editorial);
+                cargarDatos.listaLibros.add(l);
+                JOptionPane.showMessageDialog(null,"libro agregado");
+            }else if ((!codigo.isEmpty())&&(!autor.isEmpty())&&(!titulo.isEmpty())&&(!copias.isEmpty())) {
+                
+                libro l=new libro(titulo, autor, codigo, Integer.parseInt(copias));
+               JOptionPane.showMessageDialog(null,"libro agregado solo con los datos de codigo, autor, titulo y porque no se llenaron todos los  campos");
                cargarDatos.listaLibros.add(l);
-                System.out.println("libro agregado");
             }else{
                 JOptionPane.showMessageDialog(null,"llene todos los datos por favor");
             }
+        }else{
+            JOptionPane.showMessageDialog(null,"llene todos los datos por favor con  un formato correcto");
         }
         
         

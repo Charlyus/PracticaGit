@@ -4,35 +4,48 @@
  */
 package com.mycompany.practicagit;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ana
+ * @author carlos
  */
-public class ListadoGeneralEstudiante extends javax.swing.JFrame {
+public class mora extends javax.swing.JFrame {
 
     /**
-     * Creates new form ListadoGeneralEstudiante
+     * Creates new form mora
      */
-    public ListadoGeneralEstudiante() {
+    public mora() {
         initComponents();
-        llenarListado();
+        llenar();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        
     }
-    public void llenarListado(){
-        int registros=cargarDatos.listaEstudiantes.size();
+    public void llenar(){
+        ArrayList <prestamo> moras=new ArrayList<prestamo>();
+        fecha f = new fecha(1,1,1);
+        int diferencia;
+        for (prestamo p : cargarDatos.listaPrestamo) {
+            diferencia=f.diferencia(p.getFechaPrestamo(), cargarDatos.fechaGeneral);
+            if (!p.isFinalizado()&&(diferencia>3)) {
+                moras.add(p);
+            }
+            
+        }
+        int registros=moras.size();
             DefaultTableModel modeloListado = (DefaultTableModel) listado.getModel();
             modeloListado.setRowCount(registros);
             int i=0;
-            for (estudiante e : cargarDatos.listaEstudiantes) {
-                modeloListado.setValueAt(e.getCarnet(), i, 0);
-                modeloListado.setValueAt(e.getNombre(), i, 1);
-                modeloListado.setValueAt(e.getCarrera(), i, 2);
+            String auxiliar;
+            for (prestamo m : moras) {
+                auxiliar=m.getFechaPrestamo().getAnio()+"/"+m.getFechaPrestamo().getMes()+"/"+m.getFechaPrestamo().getDia();
+                modeloListado.setValueAt(m.getCarnetEstudiante(), i, 0);
+                modeloListado.setValueAt(m.getCodigoLibro(), i, 1);
+                modeloListado.setValueAt(auxiliar, i, 2);
                 i++;
             }
-    
     }
 
     /**
@@ -45,9 +58,9 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jLabel1 = new javax.swing.JLabel();
+        aaaa = new javax.swing.JScrollPane();
         listado = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -56,25 +69,20 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("listado de libros en mora");
+
         listado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
             new String [] {
-                "CARNET", "NOMBRE", "CARRERA"
+                "codigo libro", "carnet estudiante", "fecha"
             }
         ));
-        jScrollPane1.setViewportView(listado);
-
-        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jLabel2.setText("LISTADO GENERAL DE ESTUDIANTES");
+        aaaa.setViewportView(listado);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,32 +91,41 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel2))
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45))
+                        .addGap(45, 45, 45)
+                        .addComponent(aaaa, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(aaaa, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -116,9 +133,9 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-         ListadoEstudiante regresoListadoDos = new ListadoEstudiante();
+        principal regresodeLibros = new principal();
         this.setVisible(false);
-        regresoListadoDos.setVisible(true);
+        regresodeLibros.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     /**
@@ -138,28 +155,28 @@ public class ListadoGeneralEstudiante extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListadoGeneralEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListadoGeneralEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListadoGeneralEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListadoGeneralEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListadoGeneralEstudiante().setVisible(true);
+                new mora().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane aaaa;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listado;
     // End of variables declaration//GEN-END:variables
 }
