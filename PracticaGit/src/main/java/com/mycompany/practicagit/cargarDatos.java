@@ -217,7 +217,7 @@ public class cargarDatos extends javax.swing.JFrame {
                         atributo = line.split(":");
                         carrera=Integer.parseInt(atributo[1]);  
                         
-                        if ((carrera==1)||(carrera==2)||(carrera==3)||(carrera==4)||(carrera==5)||(carrera==6)) {
+                        if ((carrera==1)||(carrera==2)||(carrera==3)||(carrera==4)||(carrera==5)) {
                             System.out.println("El formato es válido.");
                             listaEstudiantes.add(new estudiante(carnet, nombre, carrera));
                         } else {

@@ -4,11 +4,13 @@
  */
 package com.mycompany.practicagit;
 
+import java.io.Serializable;
+
 /**
  *
  * @author carlos
  */
-public class prestamo {
+public class prestamo implements Serializable{
     private String codigoLibro;
     private int carnetEstudiante;
     private fecha fechaPrestamo;

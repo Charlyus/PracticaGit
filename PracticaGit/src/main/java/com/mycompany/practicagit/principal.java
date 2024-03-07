@@ -4,6 +4,11 @@
  */
 package com.mycompany.practicagit;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author carlos
@@ -68,6 +73,11 @@ public class principal extends javax.swing.JFrame {
         });
 
         btnDatos.setText("guardar  datos");
+        btnDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatosActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Reportes");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -243,6 +253,33 @@ public class principal extends javax.swing.JFrame {
         this.setVisible(false);
         m.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosActionPerformed
+        // TODO add your handling code here:
+        String nombrePrestamo="prestamo.bin";
+        String nombreEstudiante="estudiante.bin";
+        String nombrelibro="libro.bin";
+         try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(nombrePrestamo))) {
+            salida.writeObject(cargarDatos.listaPrestamo);
+            System.out.println("Archivo binario guardado correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(nombreEstudiante))) {
+            salida.writeObject(cargarDatos.listaEstudiantes);
+            System.out.println("Archivo binario guardado correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(nombrelibro))) {
+            salida.writeObject(cargarDatos.listaLibros);
+            System.out.println("Archivo binario guardado correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         
+        JOptionPane.showMessageDialog(null,"archivos binarios creados");
+    }//GEN-LAST:event_btnDatosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -76,6 +76,11 @@ public class Reportes extends javax.swing.JFrame {
         });
 
         jButton6.setText("prestamos por  carrera");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("selecciona la  opcion  que necesites");
 
@@ -176,6 +181,13 @@ public class Reportes extends javax.swing.JFrame {
         this.setVisible(false);
         pre.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        prestamosPorCarrerea ppc = new prestamosPorCarrerea();
+        this.setVisible(false);
+        ppc.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     /**
