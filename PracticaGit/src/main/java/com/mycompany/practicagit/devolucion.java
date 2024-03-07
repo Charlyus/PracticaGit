@@ -172,6 +172,7 @@ public class devolucion extends javax.swing.JFrame {
                     int año=Integer.parseInt(jtaño.getText());
                     int diasPrestado=obj.diferencia(p.getFechaPrestamo(), new fecha(dia, mes, año));
                     int total=0;
+                    System.out.println("dias prestado "+diasPrestado);
                     if (diasPrestado>0) {
                         if (diasPrestado<=3) {
                             total =diasPrestado*5;

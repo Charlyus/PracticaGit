@@ -24,11 +24,24 @@ public class fecha {
     public String toString() {
         return dia+"/"+mes+"/"+anio;
     }
+    public boolean estaEnRango(fecha fechaInicial, fecha fechaFinal, fecha fechaEvaluar) {
+        return fechaEvaluar.compareTo(fechaInicial) >= 0 && fechaEvaluar.compareTo(fechaFinal) <= 0;
+    }
+
+    public int compareTo(fecha otraFecha) {
+        if (this.anio != otraFecha.anio) {
+            return Integer.compare(this.anio, otraFecha.anio);
+        }
+        if (this.mes != otraFecha.mes) {
+            return Integer.compare(this.mes, otraFecha.mes);
+        }
+        return Integer.compare(this.dia, otraFecha.dia);
+    }
     
     
 
     public int diferencia(fecha inicio, fecha fin){
-        int diasInicio=inicio.dia+fin.dia+inicio.mes*30+inicio.anio*365;
+        int diasInicio=inicio.dia+inicio.mes*30+inicio.anio*365;
         int diasFin=fin.dia+fin.mes*30+fin.anio*365;
         return diasFin-diasInicio;
     }

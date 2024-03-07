@@ -47,6 +47,11 @@ public class Reportes extends javax.swing.JFrame {
         });
 
         jButton1.setText("dinero recaudado");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("prestamos  que se  entregan  hoy");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +157,13 @@ public class Reportes extends javax.swing.JFrame {
         this.setVisible(false);
         pre.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dineroRecaudado dr = new dineroRecaudado();
+        this.setVisible(false);
+        dr.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
