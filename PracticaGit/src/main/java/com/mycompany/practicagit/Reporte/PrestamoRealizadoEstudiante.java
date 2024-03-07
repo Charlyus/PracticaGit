@@ -30,7 +30,7 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
          for (int i=0; i<listaPrestamo.size(); i++){
              prestamo prestamoHechoEstudiante = listaPrestamo.get(i);
              if(prestamoHechoEstudiante.getCarnetEstudiante()==carnetEstudiante && prestamoHechoEstudiante.isFinalizado()== false){
-                 String[] llenarColumnas=new String [4];
+                 String[] llenarColumnas=new String [4]; 
                  llenarColumnas[0]=prestamoHechoEstudiante.getCarnetEstudiante()+"";
                  llenarColumnas[1]=prestamoHechoEstudiante.getCodigoLibro();
                  llenarColumnas[2]=prestamoHechoEstudiante.getFechaPrestamo().toString();
