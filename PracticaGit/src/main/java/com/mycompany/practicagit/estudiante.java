@@ -19,6 +19,7 @@ public class estudiante {
         this.nombre = nombre;
         this.carrera = carrera;
     }
+    
 
     
 

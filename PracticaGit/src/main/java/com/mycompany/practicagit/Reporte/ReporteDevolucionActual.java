@@ -4,10 +4,13 @@
  */
 package com.mycompany.practicagit.Reporte;
 
+import com.mycompany.practicagit.Reportes;
 import static com.mycompany.practicagit.cargarDatos.listaPrestamo;
 import com.mycompany.practicagit.fecha;
 import com.mycompany.practicagit.prestamo;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,20 +28,21 @@ public class ReporteDevolucionActual extends javax.swing.JFrame {
     
     public void DevolucionReportes(){
         LocalDate fechaActual = LocalDate.now();
-        int diaActual = fechaActual.getDayOfMonth();
-        int mesActual = fechaActual.getMonthValue();
-        int anioActual= fechaActual.getYear();
          String[] arr = { "CARNET ESTUDIANTE", "CODIGO DE LIBRO", "FECHA PRESTAMO", "FECHA DEVOLUCION" };
          DefaultTableModel dtm = new DefaultTableModel(null, arr);
         for(int  i= 0; i<listaPrestamo.size(); i++){
             prestamo prestamoTemporal = listaPrestamo.get(i);
-           fecha fechaTemporal = prestamoTemporal.getFechaDevolucion();
-           if(fechaTemporal.getDia()==diaActual && fechaTemporal.getMes()==mesActual && fechaTemporal.getAnio()==anioActual){
+           fecha fechaTemporal = prestamoTemporal.getFechaPrestamo();
+            LocalDate fechaPrestamo = LocalDate.of(fechaTemporal.getAnio(), fechaTemporal.getMes(), fechaTemporal.getDia());
+            LocalDate fechadeDevolucion = fechaPrestamo.plusDays(3);
+            Period diasDeDiferencia = fechaActual.until(fechadeDevolucion);
+            int diasTotal = diasDeDiferencia.getDays();
+           if(diasTotal== 0){
                String [] nombreColumnas = new String[4];
-                       nombreColumnas[0]=prestamoTemporal.getCarnetEstudiante()+" ";
+                       nombreColumnas[0]=prestamoTemporal.getCarnetEstudiante()+"  ";
                        nombreColumnas[1]=prestamoTemporal.getCodigoLibro();
                        nombreColumnas[2]=prestamoTemporal.getFechaPrestamo().toString();
-                       nombreColumnas[3]=prestamoTemporal.getFechaDevolucion().toString();
+                       nombreColumnas[3]=fechadeDevolucion.toString();
                        dtm.addRow(nombreColumnas);
                
                   }
@@ -62,13 +66,18 @@ public class ReporteDevolucionActual extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null}
             },
             new String [] {
                 "CARNET ESTUD.", "CODIGO LIBRO", "FECHA  PRESTAMO", "FECHA DEVOLUCION"
@@ -76,7 +85,7 @@ public class ReporteDevolucionActual extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 510, 20));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 510, 220));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -86,6 +95,13 @@ public class ReporteDevolucionActual extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Reportes regresoaReportes = new Reportes();
+        this.setVisible(false);
+        regresoaReportes.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

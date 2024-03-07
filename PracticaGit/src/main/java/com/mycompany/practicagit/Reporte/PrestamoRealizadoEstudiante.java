@@ -4,6 +4,7 @@
  */
 package com.mycompany.practicagit.Reporte;
 
+import com.mycompany.practicagit.Reportes;
 import static com.mycompany.practicagit.cargarDatos.listaPrestamo;
 import com.mycompany.practicagit.prestamo;
 import javax.swing.table.DefaultTableModel;
@@ -33,8 +34,15 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
                  llenarColumnas[0]=prestamoHechoEstudiante.getCarnetEstudiante()+"";
                  llenarColumnas[1]=prestamoHechoEstudiante.getCodigoLibro();
                  llenarColumnas[2]=prestamoHechoEstudiante.getFechaPrestamo().toString();
+                if (prestamoHechoEstudiante.getFechaDevolucion()== null){
+                    llenarColumnas[3]= "el libro aun no ha sido devuelto";
+                    
+                }else {
                  llenarColumnas[3]=prestamoHechoEstudiante.getFechaDevolucion().toString();
-                 dtm.addRow(llenarColumnas);
+             
+                
+                }
+                    dtm.addRow(llenarColumnas);
              }
              
              
@@ -60,9 +68,15 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         prestamosHechos = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabladeprestamoshechos.setBackground(new java.awt.Color(255, 255, 255));
         tabladeprestamoshechos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -73,7 +87,7 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabladeprestamoshechos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 470, 20));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 650, 210));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -91,7 +105,7 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
 
         jLabel2.setText("INGRESE SU CARNET ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
-        getContentPane().add(prestamosHechos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 300));
+        getContentPane().add(prestamosHechos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -103,6 +117,13 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
                    prestamosHechos(ingreso);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Reportes reporteCuatro = new Reportes();
+        this.setVisible(false);
+        reporteCuatro.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
