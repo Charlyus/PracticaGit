@@ -190,6 +190,7 @@ public class PrestamoDos extends javax.swing.JFrame {
                             if (cantidadLibros<3) {
                                 fecha b = new fecha(dia, mes, año);
                                 prestamo a = new prestamo(codigo, carnet, b);
+                                cargarDatos.listaPrestamo.add(a);
                                 JOptionPane.showMessageDialog(null,"prestamo realizado");
                                 
                             }else{
