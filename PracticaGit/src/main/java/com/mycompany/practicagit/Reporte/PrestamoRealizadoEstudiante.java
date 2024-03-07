@@ -29,7 +29,7 @@ public class PrestamoRealizadoEstudiante extends javax.swing.JFrame {
          DefaultTableModel dtm = new DefaultTableModel(null, prestamoHecho);
          for (int i=0; i<listaPrestamo.size(); i++){
              prestamo prestamoHechoEstudiante = listaPrestamo.get(i);
-             if(prestamoHechoEstudiante.getCarnetEstudiante()==carnetEstudiante){
+             if(prestamoHechoEstudiante.getCarnetEstudiante()==carnetEstudiante && prestamoHechoEstudiante.isFinalizado()== false){
                  String[] llenarColumnas=new String [4];
                  llenarColumnas[0]=prestamoHechoEstudiante.getCarnetEstudiante()+"";
                  llenarColumnas[1]=prestamoHechoEstudiante.getCodigoLibro();

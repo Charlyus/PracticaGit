@@ -18,6 +18,8 @@ public class dineroRecaudado extends javax.swing.JFrame {
      */
     public dineroRecaudado() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
     
     public void llenar(){

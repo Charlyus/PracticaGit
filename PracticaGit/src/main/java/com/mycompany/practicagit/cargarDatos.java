@@ -22,14 +22,16 @@ public class cargarDatos extends javax.swing.JFrame {
     public static int contadorEstudiantes;
     public static int contadorPrestamos;
     public static int contadorLibros;
-    public static int erroresRegistros;
+    public static int erroresRegistros=0;
     public static ArrayList <prestamo> listaPrestamo=new ArrayList<prestamo>();
     public static ArrayList <libro> listaLibros=new ArrayList<libro>();
     public static ArrayList <estudiante> listaEstudiantes=new ArrayList<estudiante>();
-    ArrayList <prestamo> erroresPrestamo=new ArrayList<prestamo>();
-    ArrayList <libro> erroresLibros=new ArrayList<libro>();
-    ArrayList <estudiante> erroresEstudiantes=new ArrayList<estudiante>();
+    public static ArrayList <prestamo> erroresPrestamo=new ArrayList<prestamo>();
+    public static ArrayList <libro> erroresLibros=new ArrayList<libro>();
+    public static ArrayList <estudiante> erroresEstudiantes=new ArrayList<estudiante>();
     public static fecha fechaGeneral;
+    public  static boolean errores =false;
+    public static boolean mostrado=false;
     /**
      * Creates new form Principal
      */
@@ -164,7 +166,7 @@ public class cargarDatos extends javax.swing.JFrame {
         contadorEstudiantes=0;
         contadorPrestamos=0;
         contadorLibros=0;
-        erroresRegistros=0;
+        
         String error="";
         try {
             reader = new BufferedReader(new FileReader(filePath));
@@ -246,6 +248,8 @@ public class cargarDatos extends javax.swing.JFrame {
                             listaPrestamo.add(new prestamo(codigoLibro, carnetEstudiante, a));
                         } else {
                             System.out.println("El formato no es válido.");
+                            fecha a = new fecha(Integer.parseInt(atributo[2]),Integer.parseInt(atributo[1]),Integer.parseInt(atributo[0]));
+                            erroresPrestamo.add(new prestamo(codigoLibro, carnetEstudiante, a));
                             erroresRegistros++;
                         }
                         reader.readLine();
@@ -263,7 +267,12 @@ public class cargarDatos extends javax.swing.JFrame {
             System.out.println(a.getTitulo());
         }
         JOptionPane.showMessageDialog(null, "se han cargado los datos");
-        
+        if ((erroresPrestamo!=null)||(erroresLibros!=null)||(erroresLibros!=null)) {
+            if ((erroresRegistros!=0)&&(mostrado==false)) {
+                errores e = new errores();
+                e.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

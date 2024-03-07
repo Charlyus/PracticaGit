@@ -4,6 +4,7 @@
  */
 package com.mycompany.practicagit;
 
+import com.mycompany.practicagit.Reporte.PrestamoHistorial;
 import com.mycompany.practicagit.Reporte.PrestamoRealizadoEstudiante;
 import com.mycompany.practicagit.Reporte.ReporteDevolucionActual;
 
@@ -60,14 +61,19 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("prestamos por  estudiante actualmente");
+        jButton4.setText("prestamos totales por estudiante");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("prestamos totales por estudiante");
+        jButton5.setText("presamos por estudiate actualmente");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("prestamos por  carrera");
 
@@ -77,10 +83,6 @@ public class Reportes extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,10 +93,12 @@ public class Reportes extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(38, 38, 38))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(199, 199, 199)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,17 +157,26 @@ public class Reportes extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        PrestamoRealizadoEstudiante pre = new PrestamoRealizadoEstudiante();
+        PrestamoHistorial reportePrestamoHistorial = new PrestamoHistorial();
         this.setVisible(false);
-        pre.setVisible(true);
+        reportePrestamoHistorial.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dineroRecaudado dr = new dineroRecaudado();
         this.setVisible(false);
         dr.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+=======
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         PrestamoRealizadoEstudiante pre = new PrestamoRealizadoEstudiante();
+        this.setVisible(false);
+        pre.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+>>>>>>> 5af2d42f1f09550f013543dc4b6c9341e7a864f6
 
     /**
      * @param args the command line arguments

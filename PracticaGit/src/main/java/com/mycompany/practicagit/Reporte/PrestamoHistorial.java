@@ -4,6 +4,7 @@
  */
 package com.mycompany.practicagit.Reporte;
 
+import com.mycompany.practicagit.Reportes;
 import static com.mycompany.practicagit.cargarDatos.listaPrestamo;
 import com.mycompany.practicagit.prestamo;
 import javax.swing.table.DefaultTableModel;
@@ -12,23 +13,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Ana
  */
-public class PrestamoActual extends javax.swing.JFrame {
+public class PrestamoHistorial extends javax.swing.JFrame {
 
     /**
      * Creates new form PrestamoActual
      */
-    public PrestamoActual() {
+    public PrestamoHistorial() {
         initComponents();
     }
     
     
-    public void PrestamosDeUnEstudiante  (){
-        String prestamoActual[]= {"Carnet", "Codigo LIbro", "Total Prestados ", "Fecha de Prestamo"};
+    public void PrestamosDeUnEstudiante  (int carnetEstudiante){
+        String prestamoActual[]= {"Carnet", "Codigo LIbro",  "Fecha de Prestamo","Fecha Devolucion"};
         DefaultTableModel  dtmDos = new DefaultTableModel(null, prestamoActual);
         for (int i= 0;  i<listaPrestamo.size(); i++){
-          //prestamo prestamosEstudiantes = listaPrestamo.get(i)
-            
+          prestamo Historial = listaPrestamo.get(i);
+          if (Historial.getCarnetEstudiante()==carnetEstudiante && Historial.isFinalizado()== true){
+              String [] historialLibros = new String [4];
+               historialLibros[0]=Historial.getCarnetEstudiante()+"";
+                 historialLibros[1]=Historial.getCodigoLibro();
+                 historialLibros[2]=Historial.getFechaPrestamo().toString();
+                if (Historial.getFechaDevolucion()== null){
+                    historialLibros[3]= "el libro aun no ha sido devuelto";
+                    
+               }else {
+                    historialLibros[3]=Historial.getFechaDevolucion().toString();
+                }
+                dtmDos .addRow(prestamoActual);
+                
+          }
+              
         }
+        
+        historialPrestaciones.setModel(dtmDos);
     }
 
     /**
@@ -42,43 +59,68 @@ public class PrestamoActual extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        ingresoCarnet = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        historialPrestaciones = new javax.swing.JTable();
         fondoReporCInco = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("LISTADO DE PRESTAMOS ACTUAL POR UN ESTUDIANTE");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
 
         jButton1.setText("BUSCAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 180, -1));
+        getContentPane().add(ingresoCarnet, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 180, -1));
 
         jLabel1.setText("INGRESE SU CARNET ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 130, -1));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        historialPrestaciones.setBackground(new java.awt.Color(255, 255, 255));
+        historialPrestaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
             new String [] {
-                "CARNET", "CODIGO DE LIBROS", "TOTAL DE LIBROS ", "FECHA PRESTAMO "
+                "Carnet", "Codigo De LIbros ", "Fecha Prestamo  ", "Fecha Devolucion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(historialPrestaciones);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 630, 200));
         getContentPane().add(fondoReporCInco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 290));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Reportes ReporteHistorial = new Reportes();
+        this.setVisible(false);
+        ReporteHistorial.setVisible(true);
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          String carnetIngresado = this.ingresoCarnet.getText();
+                   int ingreso = Integer.valueOf(carnetIngresado);
+                   PrestamosDeUnEstudiante(ingreso);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,31 +139,32 @@ public class PrestamoActual extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrestamoActual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrestamoHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrestamoActual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrestamoHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrestamoActual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrestamoHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrestamoActual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrestamoHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrestamoActual().setVisible(true);
+                new PrestamoHistorial().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondoReporCInco;
+    private javax.swing.JTable historialPrestaciones;
+    private javax.swing.JTextField ingresoCarnet;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

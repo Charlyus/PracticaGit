@@ -16,6 +16,7 @@ public class mora extends javax.swing.JFrame {
     /**
      * Creates new form mora
      */
+    
     public mora() {
         initComponents();
         llenar();
