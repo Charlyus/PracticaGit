@@ -4,6 +4,7 @@
  */
 package com.mycompany.practicagit;
 
+import com.mycompany.practicagit.Reporte.PrestamoHistorial;
 import com.mycompany.practicagit.Reporte.PrestamoRealizadoEstudiante;
 import com.mycompany.practicagit.Reporte.ReporteDevolucionActual;
 
@@ -66,6 +67,11 @@ public class Reportes extends javax.swing.JFrame {
         });
 
         jButton5.setText("prestamos por  estudiante actualmente");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("prestamos por  carrera");
 
@@ -162,10 +168,17 @@ public class Reportes extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        PrestamoRealizadoEstudiante pre = new PrestamoRealizadoEstudiante();
+        PrestamoHistorial reportePrestamoHistorial = new PrestamoHistorial();
+        this.setVisible(false);
+        reportePrestamoHistorial.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         PrestamoRealizadoEstudiante pre = new PrestamoRealizadoEstudiante();
         this.setVisible(false);
         pre.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
