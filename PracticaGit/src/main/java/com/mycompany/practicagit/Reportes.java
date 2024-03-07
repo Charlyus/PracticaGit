@@ -162,21 +162,21 @@ public class Reportes extends javax.swing.JFrame {
         reportePrestamoHistorial.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-<<<<<<< HEAD
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dineroRecaudado dr = new dineroRecaudado();
         this.setVisible(false);
         dr.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-=======
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
          PrestamoRealizadoEstudiante pre = new PrestamoRealizadoEstudiante();
         this.setVisible(false);
         pre.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
->>>>>>> 5af2d42f1f09550f013543dc4b6c9341e7a864f6
+
 
     /**
      * @param args the command line arguments
